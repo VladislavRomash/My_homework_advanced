@@ -47,14 +47,13 @@ export const filterAffairs = (affairs: AffairType[], filter: FilterType): Affair
             return affairs
     }
 }
-export const deleteAffair = (affairs: any, _id: any): any => { // need to fix any
-
-    return affairs // need to fix
+export const deleteAffair = (affairs: AffairType[], _id: number): AffairType[] => { // need to fix any
+    return affairs.filter(f => f._id !== _id) // need to fix
 }
 
 function HW2() {
     const [affairs, setAffairs] = useState<any>(defaultAffairs) // need to fix any
-    const [filter, setFilter] = useState<FilterType>('middle')
+    const [filter, setFilter] = useState<FilterType>('all')
 
     const filteredAffairs = filterAffairs(affairs, filter)
     const deleteAffairCallback = (_id: any) => { // need to fix any
