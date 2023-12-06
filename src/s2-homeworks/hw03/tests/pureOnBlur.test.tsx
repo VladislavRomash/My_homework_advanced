@@ -20,10 +20,10 @@ test('name 1', () => {
 test('name 2', () => {
     name = ''
     pureOnBlur(name, setError)
-    expect(error).toBe('Ошибка! Введите имя!')
+    expect(error).toBe('Error! Enter the value')
 })
 test('name 3', () => {
     name = '    '
     pureOnBlur(name, setError)
-    expect(error).toBe('Ошибка! Введите имя!')
+    expect(error).toBe('Error! Enter the value')
 })
