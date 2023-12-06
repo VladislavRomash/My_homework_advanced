@@ -52,14 +52,14 @@ const GreetingContainer: React.FC<GreetingContainerPropsType> = ({
         pureOnBlur(name, setError)
     }
 
-    const onEnter = (e: any) => {
+    const onEnter = (e: KeyboardEvent<HTMLInputElement>) => {
         pureOnEnter(e, addUser)
     }
 
     const totalUsers = users.length // need to fix
     const lastUserName = users.length > 0
         ? users[users.length - 1].name
-        : users // need to fix
+        : '' // need to fix
 
     return (
         <Greeting
