@@ -1,4 +1,7 @@
 .sidebar {
+    display: flex;
+    justify-content: space-between;
+    margin: 10px;
 }
 
 .sidebar.open {
@@ -11,13 +14,19 @@
 }
 
 .nav a {
+    text-decoration: none;
+    color: cornflowerblue;
+    margin: 10px;
 }
 
 .nav a:hover {
+    color: #0059b3;
 }
 
 .nav a.active {
+    color: midnightblue;
 }
+
 .close {
 }
 
