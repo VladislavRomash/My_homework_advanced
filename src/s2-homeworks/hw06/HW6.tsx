@@ -1,6 +1,6 @@
-import React, { useState } from 'react'
+import React, {useEffect, useState} from 'react'
 import SuperEditableSpan from './common/c4-SuperEditableSpan/SuperEditableSpan'
-import { restoreState, saveState } from './localStorage/localStorage'
+import {saveState} from './localStorage/localStorage'
 import s2 from '../../s1-main/App.module.css'
 import SuperButton from '../hw04/common/c2-SuperButton/SuperButton'
 import s from './HW6.module.css'
@@ -12,12 +12,22 @@ import s from './HW6.module.css'
  */
 
 const HW6 = () => {
-    const [value, setValue] = useState<string>('')
+
+    const get = localStorage.getItem('hw6-editable-span-value')
+
+    const [value, setValue] = useState<string>(get ? JSON.parse(get) : '')
+
+    useEffect(() => {
+        localStorage.setItem('hw6-editable-span-value', JSON.stringify(value))
+    }, []);
 
     const save = () => {
+        localStorage.setItem('hw6-editable-span-value', JSON.stringify(value))
         saveState<string>('hw6-editable-span-value', value)
+
     }
     const restore = () => {
+        setValue(get ? JSON.parse(get) : value)
         // делают студенты
 
     }
@@ -32,7 +42,7 @@ const HW6 = () => {
                     <SuperEditableSpan
                         id={'hw6-spanable-input'}
                         value={value}
-                        onChangeText={setValue}
+                        onChangeText={(value) => setValue(value)}
                         spanProps={{
                             id: 'hw6-editable-span',
                             defaultText: 'enter text...',
